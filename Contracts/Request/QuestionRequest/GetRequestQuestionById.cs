@@ -1,7 +1,6 @@
 namespace DatabankApi.Contracts.Request.QuestionRequest;
 
+public class GetRequestQuestionById
+{
 
-public class GetAllQuestionRequest{
-    
-    
 }
