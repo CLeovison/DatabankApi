@@ -11,4 +11,11 @@ public class AppDbContext : DbContext
     }
 
     public required DbSet<UserDto> UserDto { get; init; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        base.OnConfiguring(optionsBuilder);
+    }
+
+
 }
