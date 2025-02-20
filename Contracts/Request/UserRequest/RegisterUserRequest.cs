@@ -10,5 +10,5 @@ public class RegisterUserRequest
     public required string Email { get; init; }
     public required string Department { get; init; }
     public DateTime CreatedAt { get; init; }
-    public bool SoftDeleted { get; init; } = false;
+    public bool ISoftDeleted { get; init; } = false;
 }
