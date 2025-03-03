@@ -12,5 +12,7 @@ public sealed class UserConfigurations : IEntityTypeConfiguration<UserDto>
         user.HasKey(x => x.UserId);
         user.Property(n => n.FirstName);
         user.Property(n => n.LastName);
+        user.Property(n => n.Username);
+        user.Property(n => n.Password);
     }
 }
