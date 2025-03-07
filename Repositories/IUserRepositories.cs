@@ -6,4 +6,5 @@ public interface IUserRepositories
 {
     Task<bool> RegisterUserAsync();
     Task<UserDto> GetUserByIdAsync();
+    Task<UserDto> GetAllUserAsync();
 }
