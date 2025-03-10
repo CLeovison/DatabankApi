@@ -1,2 +1,0 @@
-namespace DatabankApi.Domain.TopicDomain;
-
