@@ -12,7 +12,7 @@ public class User
     public required string Department { get; init; }
     public Role Role { get; init; }
     public bool IsSoftDeleted { get; init; } = false;
-    public DateTime CreatedAt { get; init; }
-    public DateTime UpdatedAt { get; init; }
+    public DateOnly CreatedAt { get; init; }
+    public DateOnly UpdatedAt { get; init; }
 }
 

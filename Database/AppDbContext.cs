@@ -1,4 +1,5 @@
 using DatabankApi.Contracts.Data;
+using DatabankApi.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DatabankApi.Database;
@@ -10,7 +11,7 @@ public class AppDbContext : DbContext
         Database.EnsureCreated();
     }
 
-    public required DbSet<UserDto> UserDto { get; init; }
+    public required DbSet<User> User { get; init; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

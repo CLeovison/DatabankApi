@@ -1,12 +1,12 @@
-using DatabankApi.Contracts.Data;
+using DatabankApi.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DatabankApi.Configurations;
 
-public sealed class UserConfigurations : IEntityTypeConfiguration<UserDto>
+public sealed class UserConfigurations : IEntityTypeConfiguration<User>
 {
-    public void Configure(EntityTypeBuilder<UserDto> user)
+    public void Configure(EntityTypeBuilder<User> user)
     {
         user.HasIndex(x => x.UserId);
         user.HasKey(x => x.UserId);
