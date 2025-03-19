@@ -3,13 +3,7 @@ using DatabankApi.Abstract;
 namespace DatabankApi.Endpoints;
 
 
-public class RegisterUserEndpoint : IEndpoint
+public class RegisterUserEndpoint 
 {
-    public void Endpoint(IEndpointRouteBuilder app)
-    {
-        app.MapPost("register", async () =>
-        {
 
-        });
-    }
 }
