@@ -1,4 +1,5 @@
 using System.Reflection;
+using DatabankApi.Contracts.Request.UserRequest;
 using DatabankApi.Database;
 using DatabankApi.Entities;
 using DatabankApi.Extensions;
@@ -8,21 +9,32 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpoint(Assembly.GetExecutingAssembly());
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration["ConnectionStrings:Database"]);
+    options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresConnection"));
 });
 
 
 var app = builder.Build();
 
 app.MapEndpoints();
-app.Run();
-
-
-app.MapPost("/api/register", async (AppDbContext dbContext, User user, CancellationToken cancellationToken) =>
+app.MapPost("/api/register", async (AppDbContext dbContext, RegisterUserRequest request, CancellationToken cancellationToken) =>
 {
+
+    User user = new()
+    {
+        UserId = Guid.NewGuid(),
+        FirstName = request.FirstName,
+        LastName = request.LastName
+    };
     dbContext.User.Add(user);
 
     await dbContext.SaveChangesAsync(cancellationToken);
 
     return Results.Ok();
 });
+
+
+
+
+app.Run();
+
+

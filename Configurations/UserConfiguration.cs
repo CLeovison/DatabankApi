@@ -10,9 +10,22 @@ public sealed class UserConfigurations : IEntityTypeConfiguration<User>
     {
         user.HasIndex(x => x.UserId);
         user.HasKey(x => x.UserId);
-        user.Property(n => n.FirstName);
-        user.Property(n => n.LastName);
-        user.Property(n => n.Username);
-        user.Property(n => n.Password);
+
+        user.Property(c => c.UserId)
+        .HasDefaultValueSql("gen_random_uuid()")
+        .ValueGeneratedOnAdd();
+
+        user.Property(n => n.FirstName)
+        .IsRequired()
+        .HasMaxLength(100);
+
+
+        user.Property(n => n.LastName)
+        .IsRequired()
+        .HasMaxLength(100);
+
+        user.Property(d => d.CreatedAt)
+        .HasDefaultValueSql("current_date");
+
     }
 }
