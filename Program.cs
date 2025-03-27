@@ -23,7 +23,8 @@ app.MapPost("/api/register", async (AppDbContext dbContext, RegisterUserRequest 
     {
         UserId = Guid.NewGuid(),
         FirstName = request.FirstName,
-        LastName = request.LastName
+        LastName = request.LastName,
+        CreatedAt = request.CreatedAt
     };
     dbContext.User.Add(user);
 
