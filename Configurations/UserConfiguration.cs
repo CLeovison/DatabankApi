@@ -15,17 +15,34 @@ public sealed class UserConfigurations : IEntityTypeConfiguration<User>
         .HasDefaultValueSql("gen_random_uuid()")
         .ValueGeneratedOnAdd();
 
+        user.Property(n => n.Username)
+        .IsRequired()
+        .HasMaxLength(20);
+        
+        user.Property(n => n.Password)
+        .IsRequired()
+        .HasMaxLength(50);
+
         user.Property(n => n.FirstName)
         .IsRequired()
         .HasMaxLength(100);
 
-
         user.Property(n => n.LastName)
         .IsRequired()
         .HasMaxLength(100);
+        
+        user.Property(n => n.Department)
+        .IsRequired();
+
+
 
         user.Property(d => d.CreatedAt)
         .HasDefaultValueSql("current_date");
+
+        user.Property(d => d.UpdatedAt)
+        .HasDefaultValueSql("current_date");
+
+
 
     }
 }

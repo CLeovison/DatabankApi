@@ -22,9 +22,13 @@ app.MapPost("/api/register", async (AppDbContext dbContext, RegisterUserRequest 
     User user = new()
     {
         UserId = Guid.NewGuid(),
+        Username = request.Username,
+        Password = request.Password,
         FirstName = request.FirstName,
         LastName = request.LastName,
-        CreatedAt = request.CreatedAt
+        Email = request.Email,
+        Department = request.Department
+
     };
     dbContext.User.Add(user);
 
