@@ -1,6 +1,8 @@
 using DatabankApi.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace DatabankApi.Configurations;
 
@@ -18,7 +20,7 @@ public sealed class UserConfigurations : IEntityTypeConfiguration<User>
         user.Property(n => n.Username)
         .IsRequired()
         .HasMaxLength(20);
-        
+
         user.Property(n => n.Password)
         .IsRequired()
         .HasMaxLength(50);
@@ -30,17 +32,17 @@ public sealed class UserConfigurations : IEntityTypeConfiguration<User>
         user.Property(n => n.LastName)
         .IsRequired()
         .HasMaxLength(100);
-        
+
         user.Property(n => n.Department)
         .IsRequired();
-
-
 
         user.Property(d => d.CreatedAt)
         .HasDefaultValueSql("current_date");
 
         user.Property(d => d.UpdatedAt)
-        .HasDefaultValueSql("current_date");
+        .ValueGeneratedOnAddOrUpdate()
+        .HasDefaultValue("current_date")
+        .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Save);
 
 
 

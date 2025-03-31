@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DatabankApi.Migrations
 {
     /// <inheritdoc />
-    public partial class Users : Migration
+    public partial class User : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,7 +23,7 @@ namespace DatabankApi.Migrations
                     Email = table.Column<string>(type: "text", nullable: false),
                     Department = table.Column<string>(type: "text", nullable: false),
                     CreatedAt = table.Column<DateOnly>(type: "date", nullable: false, defaultValueSql: "current_date"),
-                    UpdatedAt = table.Column<DateOnly>(type: "date", nullable: false, defaultValueSql: "current_date")
+                    UpdatedAt = table.Column<DateOnly>(type: "date", nullable: false)
                 },
                 constraints: table =>
                 {

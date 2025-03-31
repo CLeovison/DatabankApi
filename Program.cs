@@ -37,8 +37,14 @@ app.MapPost("/api/register", async (AppDbContext dbContext, RegisterUserRequest 
     return Results.Ok();
 });
 
+app.MapGet("/api", async (AppDbContext dbContext) =>
+{
+    return await dbContext.User.ToListAsync();
+});
 
+app.MapGet("/api{id}", async(int id, AppDbContext dbContext) =>{
 
+});
 
 app.Run();
 
