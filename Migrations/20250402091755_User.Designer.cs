@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DatabankApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250331032839_Userss")]
-    partial class Userss
+    [Migration("20250402091755_User")]
+    partial class User
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,7 +62,8 @@ namespace DatabankApi.Migrations
 
                     b.Property<DateOnly>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasDefaultValueSql("current_date");
 
                     b.Property<string>("Username")
                         .IsRequired()

@@ -59,7 +59,8 @@ namespace DatabankApi.Migrations
 
                     b.Property<DateOnly>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasDefaultValueSql("current_date");
 
                     b.Property<string>("Username")
                         .IsRequired()

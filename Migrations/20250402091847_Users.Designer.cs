@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DatabankApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250331032811_Users")]
+    [Migration("20250402091847_Users")]
     partial class Users
     {
         /// <inheritdoc />
@@ -62,7 +62,8 @@ namespace DatabankApi.Migrations
 
                     b.Property<DateOnly>("UpdatedAt")
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("date");
+                        .HasColumnType("date")
+                        .HasDefaultValueSql("current_date");
 
                     b.Property<string>("Username")
                         .IsRequired()

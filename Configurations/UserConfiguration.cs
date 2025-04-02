@@ -41,7 +41,7 @@ public sealed class UserConfigurations : IEntityTypeConfiguration<User>
 
         user.Property(d => d.UpdatedAt)
         .ValueGeneratedOnAddOrUpdate()
-        .HasDefaultValue("current_date")
+        .HasDefaultValueSql("current_date")
         .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Save);
 
 

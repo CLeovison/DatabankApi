@@ -23,7 +23,7 @@ namespace DatabankApi.Migrations
                     Email = table.Column<string>(type: "text", nullable: false),
                     Department = table.Column<string>(type: "text", nullable: false),
                     CreatedAt = table.Column<DateOnly>(type: "date", nullable: false, defaultValueSql: "current_date"),
-                    UpdatedAt = table.Column<DateOnly>(type: "date", nullable: false)
+                    UpdatedAt = table.Column<DateOnly>(type: "date", nullable: false, defaultValueSql: "current_date")
                 },
                 constraints: table =>
                 {
