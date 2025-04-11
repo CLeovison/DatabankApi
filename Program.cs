@@ -1,5 +1,7 @@
 using System.Reflection;
+using DatabankApi.Contracts.Request.UserRequest;
 using DatabankApi.Database;
+using DatabankApi.Entities;
 using DatabankApi.Extensions;
 using DatabankApi.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -15,10 +17,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 var app = builder.Build();
 
 
-app.MapPost("", async (AppDbContext dbContext, UserRepositories repositories) =>
-{
-    var connection = dbContext.User.Add()
-});
 
 app.MapEndpoints();
 
