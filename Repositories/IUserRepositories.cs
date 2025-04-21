@@ -10,4 +10,5 @@ public interface IUserRepositories
     Task<User?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken);
     Task<bool> UpdateUserAsync(User user, CancellationToken cancellationToken);
     Task<bool> DeleteUserAsync(Guid id, CancellationToken cancellationToken);
+    Task<bool> ExsitingUserAsync(string username);
 }

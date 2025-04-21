@@ -7,7 +7,7 @@ namespace DatabankApi.Extensions;
 
 public static class EndpointExtension
 {
-    public static IServiceCollection AddEndpoint(this IServiceCollection services, Assembly assembly)
+     public static IServiceCollection AddEndpoint(this IServiceCollection services, Assembly assembly)
     {
         ServiceDescriptor[] serviceDescriptors = assembly.DefinedTypes
         .Where(type => type is { IsAbstract: false, IsInterface: false } && type.IsAssignableTo(typeof(IEndpoint)))
@@ -15,11 +15,10 @@ public static class EndpointExtension
         .ToArray();
 
         services.TryAddEnumerable(serviceDescriptors);
-
         return services;
     }
 
-    public static IApplicationBuilder MapEndpoints(this WebApplication app, RouteGroupBuilder? routeGroupBuilder = null)
+    public static IApplicationBuilder Endpoint(this WebApplication app, RouteGroupBuilder? routeGroupBuilder = null)
     {
         IEnumerable<IEndpoint> endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
         IEndpointRouteBuilder builder = routeGroupBuilder is null ? app : routeGroupBuilder;
@@ -35,5 +34,6 @@ public static class EndpointExtension
     public static RouteHandlerBuilder HasPermission(this RouteHandlerBuilder app, string permission)
     {
         return app.RequireAuthorization(permission);
+
     }
 }

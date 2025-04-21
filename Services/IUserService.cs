@@ -1,12 +1,10 @@
-using DatabankApi.Migrations;
+using DatabankApi.Entities;
 
 namespace DatabankApi.Services;
 
 
 public interface IUserService
 {
-    Task<bool> RegisterUserAsync();
-    Task UpdateUserAsync();
-    Task<bool> DeleteUserAsync();
-    Task<IEnumerable<Users>> GetAllUserAsync();
+    Task<bool> RegisterUserService(User user, CancellationToken ct);
+
 }

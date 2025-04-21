@@ -4,9 +4,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DatabankApi.Repositories;
 
-public class UserRepositories(IDbContextFactory<AppDbContext> _dbContextFactory) : IUserRepositories
+public class UserRepositories : IUserRepositories
 {
 
+    private readonly IDbContextFactory<AppDbContext> _dbContextFactory;
+
+    public UserRepositories(IDbContextFactory<AppDbContext> dbContextFactory)
+    {
+        _dbContextFactory = dbContextFactory;
+    }
     public async Task RegisterUserAsync(User user, CancellationToken cancellationToken)
     {
         using var dbContext = await _dbContextFactory.CreateDbContextAsync(cancellationToken);
@@ -56,6 +62,14 @@ public class UserRepositories(IDbContextFactory<AppDbContext> _dbContextFactory)
         using var dbContext = await _dbContextFactory.CreateDbContextAsync(cancellationToken);
         var userDelete = dbContext.User.Where(x => x.UserId == id).ExecuteDelete();
         return userDelete > 0;
+
+
+    }
+
+    public async Task<bool> ExsitingUserAsync(string username)
+    {
+        using var dbContext = await _dbContextFactory.CreateDbContextAsync();
+        return await dbContext.User.AnyAsync(u => u.Username == username);
 
 
     }

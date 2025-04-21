@@ -1,26 +1,26 @@
 using System.Reflection;
-using DatabankApi.Contracts.Request.UserRequest;
 using DatabankApi.Database;
-using DatabankApi.Entities;
 using DatabankApi.Extensions;
 using DatabankApi.Repositories;
+using DatabankApi.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddEndpoint(Assembly.GetExecutingAssembly());
-builder.Services.AddDbContext<AppDbContext>(options =>
+
+builder.Services.AddDbContextFactory<AppDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("PostgresConnection"));
 });
 
 
+builder.Services.AddEndpoint(Assembly.GetExecutingAssembly());
+builder.Services.AddSingleton<IUserRepositories, UserRepositories>();
+builder.Services.AddSingleton<IUserService, UserService>();
+
+
 var app = builder.Build();
 
-
-
-app.MapEndpoints();
-
-
+app.Endpoint();
 
 app.Run();
 
