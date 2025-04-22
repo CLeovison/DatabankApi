@@ -1,11 +1,15 @@
 using System.Reflection;
 using DatabankApi.Database;
+using DatabankApi.Entities;
 using DatabankApi.Extensions;
+using DatabankApi.Infrastracture;
 using DatabankApi.Repositories;
 using DatabankApi.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 builder.Services.AddDbContextFactory<AppDbContext>(options =>
 {
@@ -16,10 +20,10 @@ builder.Services.AddDbContextFactory<AppDbContext>(options =>
 builder.Services.AddEndpoint(Assembly.GetExecutingAssembly());
 builder.Services.AddSingleton<IUserRepositories, UserRepositories>();
 builder.Services.AddSingleton<IUserService, UserService>();
+builder.Services.AddSingleton<IPasswordHasher<User>, PasswordHasher>();
 
 
 var app = builder.Build();
-
 app.Endpoint();
 
 app.Run();

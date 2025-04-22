@@ -1,6 +1,7 @@
 using DatabankApi.Abstract;
 using DatabankApi.Entities;
 using DatabankApi.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace DatabankApi.Endpoints.UserEndpoint;
 
@@ -13,9 +14,9 @@ public class RegisterUserEndpoint : IEndpoint
     }
     public void Endpoint(IEndpointRouteBuilder app)
     {
-        app.MapPost("/api/create", async (User user, CancellationToken ct) =>
+        app.MapPost("/api/create", async (User user, IPasswordHasher<User> passwordHasher) =>
         {
-            await _userServices.RegisterUserService(user, ct);
+            await _userServices.RegisterUserService(user,passwordHasher);
         });
     }
 }

@@ -23,7 +23,7 @@ public sealed class UserConfigurations : IEntityTypeConfiguration<User>
 
         user.Property(n => n.Password)
         .IsRequired()
-        .HasMaxLength(50);
+        .HasMaxLength(250);
 
         user.Property(n => n.FirstName)
         .IsRequired()

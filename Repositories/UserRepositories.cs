@@ -13,12 +13,12 @@ public class UserRepositories : IUserRepositories
     {
         _dbContextFactory = dbContextFactory;
     }
-    public async Task RegisterUserAsync(User user, CancellationToken cancellationToken)
+    public async Task RegisterUserAsync(User user)
     {
-        using var dbContext = await _dbContextFactory.CreateDbContextAsync(cancellationToken);
+        using var dbContext = await _dbContextFactory.CreateDbContextAsync();
 
-        await dbContext.Set<User>().AddAsync(user, cancellationToken);
-        await dbContext.SaveChangesAsync(cancellationToken);
+        await dbContext.Set<User>().AddAsync(user);
+        await dbContext.SaveChangesAsync();
     }
 
     public async Task<List<User>> GetAllUserAsync(CancellationToken cancellationToken)
