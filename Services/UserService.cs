@@ -32,5 +32,26 @@ public class UserService : IUserService
         return user;
     }
 
+    public async Task<User?> UpdateUserAsync(Guid id, User user, IPasswordHasher<User> passwordHasher, CancellationToken ct)
+    {
+        if (await _userRepositories.GetUserByIdAsync(id) is null)
+        {
+            throw new ArgumentException();
+        }
+
+        var userUpdate = new User
+        {
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Username = user.Username,
+            Password = passwordHasher.HashPassword(user, user.Password),
+            Email = user.Email,
+            Department = user.Department
+        };
+
+        await _userRepositories.UpdateUserAsync(userUpdate, ct);
+
+        return userUpdate;
+    }
 
 }

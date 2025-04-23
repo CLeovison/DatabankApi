@@ -43,10 +43,10 @@ public class UserRepositories : IUserRepositories
             n.LastName
         }).ToListAsync();
     }
-    public async Task<User?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<User?> GetUserByIdAsync(Guid id)
     {
-        using var dbContext = await _dbContextFactory.CreateDbContextAsync(cancellationToken);
-        return await dbContext.User.FindAsync(id, cancellationToken);
+        using var dbContext = await _dbContextFactory.CreateDbContextAsync();
+        return await dbContext.User.FindAsync(id);
     }
     public async Task<bool> UpdateUserAsync(User user, CancellationToken cancellationToken)
     {
