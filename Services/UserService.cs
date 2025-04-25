@@ -32,26 +32,23 @@ public class UserService : IUserService
         return user;
     }
 
-    public async Task<User?> UpdateUserAsync(Guid id, User user, IPasswordHasher<User> passwordHasher, CancellationToken ct)
+    public async Task<User?> UpdateUserAsync(Guid id, User user, CancellationToken ct)
     {
-        if (await _userRepositories.GetUserByIdAsync(id) is null)
+        var existingUser = await _userRepositories.GetUserByIdAsync(user.UserId);
+
+        if (existingUser is null)
         {
-            throw new ArgumentException();
+            throw new ArgumentException("The User Didn't Exist");
         }
 
-        var userUpdate = new User
-        {
-            FirstName = user.FirstName,
-            LastName = user.LastName,
-            Username = user.Username,
-            Password = passwordHasher.HashPassword(user, user.Password),
-            Email = user.Email,
-            Department = user.Department
-        };
+        existingUser.FirstName = user.FirstName;
+        existingUser.LastName = user.LastName;
+        existingUser.Username = user.Username;
+        existingUser.Password = user.Password;
+        existingUser.Email = user.Email;
 
-        await _userRepositories.UpdateUserAsync(userUpdate, ct);
-
-        return userUpdate;
+        await _userRepositories.UpdateUserAsync(id, existingUser);
+        return user;
     }
 
 }

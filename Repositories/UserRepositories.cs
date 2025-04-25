@@ -48,12 +48,15 @@ public class UserRepositories : IUserRepositories
         using var dbContext = await _dbContextFactory.CreateDbContextAsync();
         return await dbContext.User.FindAsync(id);
     }
-    public async Task<bool> UpdateUserAsync(User user, CancellationToken cancellationToken)
+    public async Task UpdateUserAsync(Guid id, User user)
     {
-        using var dbContext = await _dbContextFactory.CreateDbContextAsync(cancellationToken);
-        var userUpdate = dbContext.Set<User>().Update(user);
-        await dbContext.SaveChangesAsync(cancellationToken);
-        return userUpdate is null;
+        using var dbContext = await _dbContextFactory.CreateDbContextAsync();
+        var userUpdate = await dbContext.User.FindAsync(user.UserId);
+
+        if (userUpdate is null) return;
+
+        dbContext.Entry(userUpdate).CurrentValues.SetValues(user);
+        await dbContext.SaveChangesAsync();
 
     }
 
