@@ -20,7 +20,7 @@ builder.Services.AddDbContextFactory<AppDbContext>(options =>
 builder.Services.AddEndpoint(Assembly.GetExecutingAssembly());
 builder.Services.AddSingleton<IUserRepositories, UserRepositories>();
 builder.Services.AddSingleton<IUserService, UserService>();
-builder.Services.AddSingleton<IPasswordHasher<User>, PasswordHasher>();
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
 
 var app = builder.Build();
