@@ -12,7 +12,7 @@ public class RegisterUserEndpoint : IEndpoint
 
     public void Endpoint(IEndpointRouteBuilder app)
     {
-        app.MapPost("/api/create", async ([FromBody] RegisterUserRequest request, IPasswordHasher<User> passwordHasher, IUserService userService) =>
+        app.MapPost("/api/create", async ([FromBody] RegisterUserRequest request, IPasswordHasher<User> passwordHasher, IUserService userService, User user) =>
         {
             var newUser = new User
             {
