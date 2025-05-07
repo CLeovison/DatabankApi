@@ -1,4 +1,4 @@
-using DatabankApi.Contracts.Request.UserRequest;
+using DatabankApi.Contracts.Response.UserResponse;
 using DatabankApi.Entities;
 
 namespace DatabankApi.Mapping;
@@ -6,16 +6,17 @@ namespace DatabankApi.Mapping;
 
 public static class EntitiesToContractsMapper
 {
-    public static RegisterUserRequest ToService(this User user)
+
+    public static RegisterUserResponse ToUserResponse(this User user)
     {
-        return new RegisterUserRequest
+        return new RegisterUserResponse
         {
             FirstName = user.FirstName,
             LastName = user.LastName,
-            Username = user.Username,
-            Password = user.Password,
             Email = user.Email,
-            Department = user.Department
+            Department = user.Department,
+            Username = user.Username,
+            Password = user.Password
         };
     }
 }
