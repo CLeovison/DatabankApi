@@ -6,16 +6,16 @@ namespace DatabankApi.Mapping;
 
 public static class ContractsToEntitiesMapper
 {
-    public static RegisterUserRequest ToRegister(this User user)
+    public static User ToRegister(this RegisterUserRequest req)
     {
-        return new RegisterUserRequest
+        return new User
         {
-            FirstName = user.FirstName,
-            LastName = user.LastName,
-            Email = user.Email,
-            Department = user.Department,
-            Username = user.Username,
-            Password = user.Password,
+            FirstName = req.FirstName,
+            LastName = req.LastName,
+            Email = req.Email,
+            Department = req.Department,
+            Username = req.Username,
+            Password = req.Password,
         };
     }
 }
