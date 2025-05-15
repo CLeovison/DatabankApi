@@ -16,7 +16,7 @@ public static class DtoToEntitiesMapper
             Email = user.Email,
             Department = user.Department,
             Username = user.Username,
-            Password = passwordHasher.HashPassword(user, user.Password),
+            Password = passwordHasher.HashPassword(new User(), user.Password),
         };
     }
 }

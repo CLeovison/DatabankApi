@@ -1,12 +1,13 @@
 using DatabankApi.Contracts.Request.UserRequest;
 using DatabankApi.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace DatabankApi.Mapping;
 
 
 public static class ContractsToEntitiesMapper
 {
-    public static User ToRegister(this RegisterUserRequest req)
+    public static User ToRegister(this RegisterUserRequest req, IPasswordHasher<User> passwordHasher)
     {
         return new User
         {
@@ -15,7 +16,7 @@ public static class ContractsToEntitiesMapper
             Email = req.Email,
             Department = req.Department,
             Username = req.Username,
-            Password = req.Password,
+            Password = passwordHasher.HashPassword(new User(), req.Password),
         };
     }
 }
