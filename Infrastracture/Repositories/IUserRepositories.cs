@@ -1,4 +1,4 @@
-using DatabankApi.Contracts.Data;
+
 using DatabankApi.Domain.Entities;
 
 namespace DatabankApi.Repositories;
@@ -7,5 +7,5 @@ namespace DatabankApi.Repositories;
 public interface IUserRepositories
 {
     Task<bool> CreateUserAsync(User users);
-    Task<IEnumerable<User>> GetAllUserAsync();
+    Task<IEnumerable<User>> GetAllUserAsync(CancellationToken ct);
 }

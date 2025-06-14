@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace DatabankApi.Extensions;
 
-
 public static class EndpointExtension
 {
      public static IServiceCollection AddEndpoint(this IServiceCollection services, Assembly assembly)

@@ -1,6 +1,6 @@
 using System.Reflection;
 using DatabankApi.Database;
-using DatabankApi.Entities;
+using DatabankApi.Domain.Entities;
 using DatabankApi.Extensions;
 using DatabankApi.Infrastracture;
 using DatabankApi.Repositories;

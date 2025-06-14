@@ -15,4 +15,10 @@ public sealed class UserServices(IUserRepositories userRepositories) : IUserServ
         var userDto = user.ToDto(passwordHasher);
         return await userRepositories.CreateUserAsync(userDto);
     }
+
+    public async Task<IEnumerable<User>> GetAllUserAsync(CancellationToken ct)
+    {
+        return await userRepositories.GetAllUserAsync(ct);
+        
+    }
 }
