@@ -1,6 +1,6 @@
-using DatabankApi.Configurations;
+
 using DatabankApi.Contracts.Data;
-using DatabankApi.Entities;
+using DatabankApi.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DatabankApi.Database;

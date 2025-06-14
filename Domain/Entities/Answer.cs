@@ -1,4 +1,4 @@
-namespace DatabankApi.Entities;
+namespace DatabankApi.Domain.Entities;
 
 
 public class Answer

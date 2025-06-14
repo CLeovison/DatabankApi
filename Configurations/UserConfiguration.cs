@@ -1,8 +1,8 @@
-using DatabankApi.Entities;
+using DatabankApi.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
 
 namespace DatabankApi.Configurations;
 

@@ -1,5 +1,5 @@
 using DatabankApi.Contracts.Data;
-using DatabankApi.Entities;
+using DatabankApi.Domain.Entities;
 
 namespace DatabankApi.Repositories;
 

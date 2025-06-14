@@ -1,4 +1,4 @@
-namespace DatabankApi.Entities;
+namespace DatabankApi.Domain.Entities;
 
 /// <summary>
 /// This Entities is for adding a subject

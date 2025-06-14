@@ -1,5 +1,5 @@
 using DatabankApi.Database;
-using DatabankApi.Entities;
+using DatabankApi.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DatabankApi.Repositories;

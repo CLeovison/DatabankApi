@@ -1,6 +1,6 @@
 using DatabankApi.Contracts.Data;
 using DatabankApi.Contracts.Request.UserRequest;
-using DatabankApi.Entities;
+using DatabankApi.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace DatabankApi.Mapping;

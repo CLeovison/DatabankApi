@@ -1,5 +1,5 @@
 using DatabankApi.Contracts.Response.UserResponse;
-using DatabankApi.Entities;
+using DatabankApi.Domain.Entities;
 
 namespace DatabankApi.Mapping;
 
@@ -16,7 +16,7 @@ public static class EntitiesToContractsMapper
             Email = user.Email,
             Department = user.Department,
             Username = user.Username,
-            Password = user.Password
+
         };
     }
 }

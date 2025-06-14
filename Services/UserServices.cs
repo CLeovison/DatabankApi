@@ -1,4 +1,4 @@
-using DatabankApi.Entities;
+using DatabankApi.Domain.Entities;
 using DatabankApi.Repositories;
 using Microsoft.AspNetCore.Identity;
 using DatabankApi.Mapping;
