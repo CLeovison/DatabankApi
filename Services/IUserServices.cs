@@ -9,4 +9,7 @@ public interface IUserServices
 {
     Task<bool> CreateUserAsync(UserDto user, IPasswordHasher<User> passwordHasher);
     Task<IEnumerable<User>> GetAllUserAsync(CancellationToken ct);
+    Task<User?> GetUserByIdAsync(Guid id);
+    Task<User?> UpdateUserAsync(User users);
+    Task<bool> DeleteUserAsync(Guid id);
 }
